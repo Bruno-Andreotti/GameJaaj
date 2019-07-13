@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController2D controller;
-    public Animator animator;
+    //public Animator animator;
 
     public float runSpeed = 40f;
     float HorizontalMove = 0f;
@@ -17,12 +17,12 @@ public class PlayerMovement : MonoBehaviour
         // GetComponent<Grab>().isHolding = true;
         HorizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
-        animator.SetFloat("Speed",Mathf.Abs(HorizontalMove));
+        //animator.SetFloat("Speed",Mathf.Abs(HorizontalMove));
 
         if(Input.GetButtonDown("Jump"))
         {
             jump = true;
-            animator.SetBool("IsJumping", true);
+            //animator.SetBool("IsJumping", true);
         }
         /*if (GetComponent<Grab>().isHolding == true)
         {
@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnLanding()
     {
-        animator.SetBool("IsJumping", false);
+        //animator.SetBool("IsJumping", false);
     }
     private void FixedUpdate()
     {

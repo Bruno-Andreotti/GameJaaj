@@ -18,6 +18,7 @@ public class CharacterController2D : MonoBehaviour
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
+    public int jumpCounter;
 
 	[Header("Events")]
 	[Space]
@@ -54,6 +55,7 @@ public class CharacterController2D : MonoBehaviour
 			if (colliders[i].gameObject != gameObject)
 			{
 				m_Grounded = true;
+                jumpCounter = 1;
 				if (!wasGrounded)
 					OnLandEvent.Invoke();
 			}
@@ -124,12 +126,21 @@ public class CharacterController2D : MonoBehaviour
 			}
 		}
 		// If the player should jump...
-		if (jump)
+
+		if (jump && m_Grounded)
 		{
 			// Add a vertical force to the player.
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+
+            
+            
 		}
+        if(jump && !m_Grounded && jumpCounter > 0)
+        {
+            m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+            jumpCounter--;
+        }
 	}
 
 
