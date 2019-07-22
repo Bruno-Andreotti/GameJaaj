@@ -143,7 +143,7 @@ SpriteRenderer:
   m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &1516576844977327580
@@ -168,6 +168,7 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 1516576843212685374}
   m_CeilingCheck: {fileID: 1516576843179456882}
   m_CrouchDisableCollider: {fileID: 1516576844977327553}
+  m_Rigidbody2D: {fileID: 0}
   jumpCounter: 1
   OnLandEvent:
     m_PersistentCalls:
@@ -238,7 +239,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20f010fd60eae2748b4412750d786a01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 1516576844977327580}
+  controller1: {fileID: 0}
+  animator1: {fileID: 0}
+  controller2: {fileID: 0}
+  animator2: {fileID: 0}
+  JumpClip: {fileID: 0}
+  JumpSource: {fileID: 0}
   runSpeed: 40
 --- !u!58 &1516576844977327555
 CircleCollider2D:

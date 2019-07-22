@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - NextLevel
+  - Danger
   layers:
   - Default
   - TransparentFX
@@ -13,9 +15,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Player
+  - Background
+  - Shadow
   - 
   - 
   - 
@@ -40,4 +42,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Shadow
+    uniqueID: 3758907633
+    locked: 0
+  - name: Background
+    uniqueID: 142140303
+    locked: 0
+  - name: Player
+    uniqueID: 550299427
     locked: 0

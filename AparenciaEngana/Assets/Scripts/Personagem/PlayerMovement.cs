@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public CharacterController2D controller;
-    //public Animator animator;
-
+    public CharacterController2D controller1;
+    public Animator animator1;
+    public CharacterController2D controller2;
+    public Animator animator2;
+    public AudioClip JumpClip;
+    public AudioSource JumpSource;
+    //public AudioClip LandClip;
+    //public AudioSource LandSource;
     public float runSpeed = 40f;
     float HorizontalMove = 0f;
     bool jump=false;
+
+    private void Start()
+    {
+        JumpSource.clip = JumpClip;
+        //LandSource.clip = LandClip;
+    }
 
     // Update is called once per frame
     void Update()
@@ -17,12 +28,25 @@ public class PlayerMovement : MonoBehaviour
         // GetComponent<Grab>().isHolding = true;
         HorizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
-        //animator.SetFloat("Speed",Mathf.Abs(HorizontalMove));
+        animator1.SetFloat("Speed",Mathf.Abs(HorizontalMove));
+        animator2.SetFloat("Speed", Mathf.Abs(HorizontalMove));
+        //if (HorizontalMove == 1f)
+        //{
+            
+            
+        //    WalkSource.Play();
+            
+        //}
 
-        if(Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump"))
         {
             jump = true;
-            //animator.SetBool("IsJumping", true);
+            animator1.SetBool("IsJumping", true);
+            animator2.SetBool("IsJumping", true);
+
+            //JumpSource.volume = 1.0f;
+            //JumpSource.PlayOneShot(JumpClip);
+            
         }
         /*if (GetComponent<Grab>().isHolding == true)
         {
@@ -36,12 +60,18 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnLanding()
     {
-        //animator.SetBool("IsJumping", false);
+        
+            //LandSource.PlayOneShot(LandClip);
+            animator1.SetBool("IsJumping", false);
+            animator2.SetBool("IsJumping", false);
+            
+        
     }
     private void FixedUpdate()
     {
         //move character
-        controller.Move(HorizontalMove * Time.fixedDeltaTime, false, jump);
+        controller1.Move(HorizontalMove * Time.fixedDeltaTime, false, jump);
+        controller2.Move(HorizontalMove * Time.fixedDeltaTime, false, jump);
         jump = false;
     }
 }
